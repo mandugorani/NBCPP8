@@ -80,7 +80,7 @@ void AMineItem::Explode()
 
 	DestroyItem();
 
-	TWeakObjectPtr<UParticleSystemComponent> WeakParticle(Particle); // weakptr사용
+	TWeakObjectPtr<UParticleSystemComponent> WeakParticle(Particle); // weakptr사용 3
 
 	if (WeakParticle.IsValid())
 	{

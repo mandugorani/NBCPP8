@@ -206,13 +206,14 @@ void ASpartaGameState::UpdateHUD()
 	if (APlayerController* PlayerController = GetWorld()->GetFirstPlayerController())
 	{
 		ASpartaPlayerController* SpartaPlayerController = Cast<ASpartaPlayerController>(PlayerController);
+		if (SpartaPlayerController)
 		{
 			if (UUserWidget* HUDWidget = SpartaPlayerController->GetHUDWidget())
 			{
 				if (UTextBlock* TimeText = Cast<UTextBlock>(HUDWidget->GetWidgetFromName(TEXT("Time"))))
 				{
-					float RemainingTime = GetWorldTimerManager().GetTimerRemaining(LevelTimerHandle);
-					TimeText->SetText(FText::FromString(FString::Printf(TEXT("Time: %.1f"), RemainingTime)));
+					float RemainingWaveTime = GetWorldTimerManager().GetTimerRemaining(WaveTimerHandle);
+					TimeText->SetText(FText::FromString(FString::Printf(TEXT("Wave Time: %.1f"), RemainingWaveTime)));
 				}
 
 				if (UTextBlock* ScoreText = Cast<UTextBlock>(HUDWidget->GetWidgetFromName(TEXT("Score"))))
@@ -226,7 +227,6 @@ void ASpartaGameState::UpdateHUD()
 						}
 					}
 				}
-
 				if (UTextBlock* LevelIndexText = Cast<UTextBlock>(HUDWidget->GetWidgetFromName(TEXT("Level"))))
 				{
 					LevelIndexText->SetText(FText::FromString(FString::Printf(TEXT("Level: %d"), CurrentLevelIndex + 1)));

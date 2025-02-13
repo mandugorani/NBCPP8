@@ -77,10 +77,10 @@ void ABaseItem::ActivateItem(AActor* Activator)
 
 		if (!WeakPickupAudio.IsValid())
 		{
-			UE_LOG(LogTemp, Warning, TEXT("spawn PickupAudio Fail"));
+			UE_LOG(LogTemp, Warning, TEXT("spawnnPickupAudioFail"));
 		}
 	}else{
-		UE_LOG(LogTemp, Warning, TEXT("PickupSound null"));
+		UE_LOG(LogTemp, Warning, TEXT("fail2"));
 	}
 
 	if (WeakParticle.IsValid())
@@ -124,7 +124,6 @@ FName ABaseItem::GetItemType() const
 {
 	return ItemType;
 }
-
 
 void ABaseItem::DestroyItem()
 {
